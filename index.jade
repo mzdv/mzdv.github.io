@@ -1,16 +1,18 @@
 html
     link(rel = "stylesheet", href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
-    .header
+    .container-fluid
+    .row
+    .header(class="col-md-12")
         p Milos Zivadinovic
         p mzdv
-
-    .body
-        #left
+    .row
+    .body(class="col-md-12")
+        #left(class="col-md-6")
             p Software development
-        #right
+        #right(class="col-md-6")
             p Security consulting
-
-    .contact
+    .row
+    .contact(class="col-md-12")
         p Contact me
         p LinkedIn
         p Mail
