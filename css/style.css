@@ -1,0 +1,43 @@
+body {
+
+}
+p {
+    margin: 10px 0 10px 0;
+}
+
+.header {
+    background-image: url("http://placekitten.com/1000/2000");
+}
+
+.body {
+    padding-left: 0;
+    padding-right: 0;
+    color: white;
+}
+
+#left {
+    background-color: #D92525;
+    padding-top: 250px;
+    padding-bottom: 250px;
+}
+
+#right {
+    background-color: #0E3D59;
+    padding-top: 250px;
+    padding-bottom: 250px;
+}
+
+.contact {
+    background-color: #88A61B;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#linkedin {
+    border: solid black 1px;
+    border-right: 0;
+}
+
+#mail {
+    border: solid black 1px;
+}

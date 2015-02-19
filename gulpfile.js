@@ -1,5 +1,5 @@
-var gulp = require('gulp'),
-    livereload = require('gulp-livereload'),
+var gulp = require("gulp"),
+    livereload = require("gulp-livereload"),
     watch = require("gulp-watch"),
     path = require("path");
 
@@ -10,14 +10,11 @@ gulp.task("watch", function() {
         .pipe(livereload());
 });
 
-gulp.task('develop', function () {
+gulp.task("develop", function () {
     livereload.listen();
-    //setTimeout(function () {
-    //            livereload.changed('/');
-    //       }, 500);
 });
 
 gulp.task('default', [
     "watch",
-    'develop'
+    "develop"
 ]);
