@@ -1,12 +1,14 @@
 .row {
     margin: 0;
 }
+
 p {
     margin: 10px 0 10px 0;
 }
 
 .header {
-    background-image: url("http://placekitten.com/1000/2000");
+    background-image: url("http://placekitten.com/1000/300");
+    height: 25%;
 }
 
 .body {
@@ -17,14 +19,14 @@ p {
 
 #left {
     background-color: #D92525;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 18%;
+    padding-bottom: 18%;
 }
 
 #right {
     background-color: #0E3D59;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 18%;
+    padding-bottom: 18%;
 }
 
 .contact {
