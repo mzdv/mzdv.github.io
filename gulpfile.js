@@ -6,7 +6,7 @@ var gulp = require("gulp"),
 gulp.task("watch", function() {
     gulp.src(__dirname)
         .pipe(watch(path.join(__dirname, "index.html")))
-        .pipe(watch(path.join(__dirname, "/css")))
+        .pipe(watch(path.join(__dirname, "/css/style.css")))
         .pipe(livereload());
 });
 
