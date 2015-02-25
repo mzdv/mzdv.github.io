@@ -1,3 +1,39 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "PT Serif", Georgia, serif;
+    font-size: 16px;
+}
+
+@media (min-width: 48em) {
+    html {
+        font-size: 21px;
+    }
+}
+
+body {
+    padding: 2rem 1.5rem;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Serif', Georgia, serif;
+}
+
+
+.main-content {
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+/** Unedited code **/
+
 .row {
     margin: 0;
 }
@@ -6,14 +42,18 @@
     height: 350px;
 }
 
+
 .content {
     padding-top: 100px;
 }
+
+/*
+   > implying this code be good
+*/
 p,a,h1 {
     margin: 10px 0 10px 0;
     padding-left: 0;
     padding-right: 0;
-    color: white;
 }
 
 p,a {
@@ -21,29 +61,19 @@ p,a {
 }
 
 .header {
-    background:
-    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-    background-color: #131313;
-    background-size: 20px 20px;
-
     height: 20%;
 }
 
 #upper {
-    background-color: #D92525;
+    background-color: #c0392b;
 }
 
 #lower {
-    background-color: #0E3D59;
+    background-color: #2980b9;
 }
 
 .contact {
-    background-color: #88A61B;
+    background-color: #27ae60;
     padding-left: 0;
     padding-right: 0;
 }
@@ -51,8 +81,8 @@ p,a {
 .data {
     background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0 10px,
     linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
     linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
     linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
