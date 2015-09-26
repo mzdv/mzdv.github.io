@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Kompilacija i još par koncepata | Haskell za studente</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./chapter6.html" />
+    
+    
+    <link rel="prev" href="./chapter4.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="5" data-basepath="." data-revision="Thu Sep 17 2015 19:35:47 GMT+0200 (Central Europe Daylight Time)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Šta je Haskell i šta ga čini u osnovi?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2.html">
+            
+                
+                    <a href="./chapter2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Model podataka
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3.html">
+            
+                
+                    <a href="./chapter3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Interpreter i kompajler
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4.html">
+            
+                
+                    <a href="./chapter4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Implementacija modela
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5" data-path="chapter5.html">
+            
+                
+                    <a href="./chapter5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Kompilacija i još par koncepata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6.html">
+            
+                
+                    <a href="./chapter6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Gde dalje?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Haskell za studente</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="kompilacija-i-jo%C5%A1-par-koncepata">Kompilacija i jo&#x161; par koncepata</h1>
+<hr>
+<h2 id="uvod">Uvod</h2>
+<p>Pre par poglavlja sam rekao da &#x107;emo se baviti kompilacijom Haskell programa. Pokazao sam &#x10D;ak
+i primer kako se izvr&#x161;ava kompilacija. Da li mo&#x17E;emo svaki Haskell program koji interpretiramo
+da kompajliramo? <strong>Ne.</strong></p>
+<p>Pre toga moramo da napravimo nekoliko sitnih izmena.</p>
+<p>Uzmimo slede&#x107;i kod kao primer:</p>
+<pre><code>Prelude Data.Map&gt; let listaBrojeva = [1,2,3,4,5]
+Prelude Data.Map&gt; listaBrojeva
+[1,2,3,4,5]
+Prelude Data.Map&gt; zip [5,6,7,8,9] listaBrojeva
+[(5,1),(6,2),(7,3),(8,4),(9,5)]
+</code></pre><p>Ovaj kod koristi funkciju <code>zip</code> koja pravi ure&#x111;ene parove izme&#x111;u dve liste. I ovaj kod se
+interpretira. Ali sad, ako bismo ga kompajlirali, kompajler bi prijavio gre&#x161;ku. Za&#x161;to? Zato
+&#x161;to ne postoji ulazna ta&#x10D;ka programa - <code>main</code> monada.</p>
+<h2 id="main-monada">Main monada</h2>
+<p><code>main</code> monada je tipa <code>IO()</code> koji je polimorfni tip. Ovo je ve&#x107; re&#x10D;eno pre. <code>IO()</code> tip se tako
+zove iz razloga &#x161;to on omogu&#x107;ava I/O (ulazne / izlazne) operacije za Haskell programe.</p>
+<p>Jedna obi&#x10D;na <code>main</code> monada bi izgledala ovako:</p>
+<pre><code>main :: IO()
+main = putStrLn &quot;Pozdrav svete!&quot;
+</code></pre><p>Njenom kompilacijom i izvr&#x161;avanjem bismo dobili slede&#x107;i rezultat:</p>
+<pre><code>Pozdrav svete!
+</code></pre><p>Prosto da ne mo&#x17E;e prostije. Ali &#x161;ta ako bismo hteli da imamo vi&#x161;e ulaznih ili izlaznih 
+funkcija? Koristimo klju&#x10D;nu re&#x10D; <code>do</code> koja spaja sve funkcije unutar njenog bloka u jednu
+funkciju (koja je tipa <code>IO()</code> &#x161;to se poklapa sa <code>main</code> monadom).</p>
+<p>Primer:</p>
+<pre><code>main :: IO()
+main = do
+    putStrLn &quot;Pozdrav svete!&quot;
+    putStrLn &quot;Pozdrav ponovo!&quot;
+    ime &lt;- getLine
+    putStrLn (&quot;Zdravo &quot; ++ ime ++ &quot;!&quot;)
+</code></pre><p>Rezultat:</p>
+<pre><code>Pozdrav svete!
+Pozdrav ponovo!
+Zdravo Milos!
+</code></pre><p>Sada kada imamo osnove funkcionisanja <code>main</code> monade, hajde da na&#x161; gornji primer predstavimo
+u obliku programa koji se kompajlira.</p>
+<pre><code>main :: IO()
+main = do
+    let listaBrojeva = [1,2,3,4,5]
+    noviBrojevi &lt;- getLine
+    let brojeviInt = map (\x -&gt; read [x]::Int) noviBrojevi
+    putStrLn (show(zip brojeviInt listaBrojeva))
+</code></pre><p>Izlaz (za ulaz <code>11111</code>):</p>
+<pre><code>[(1,1),(1,2),(1,3),(1,4),(1,5)]
+</code></pre><p>Ovde se susre&#x107;emo sa novim elementima sintakse. Jedan od njih jeste lambda funkcija, ozna&#x10D;ena
+znakom <code>\</code>. Ona nam omogu&#x107;ava da na licu mesta defini&#x161;emo funkciju koja &#x107;e postojati samo
+dok postoji doseg funkcije u kojoj je definisana. U ovom slu&#x10D;aju, ona za svaki element stringa
+<code>noviBrojevi</code> (po&#x161;to je unos u Haskell-u uvek string) vr&#x161;i kastovanje putem funkcije <code>read</code> u
+tip podataka <code>Int</code>, a potom ga stavlja u novu listu.</p>
+<p>Kasnije, putem funkcije <code>show</code> pretvaramo rezultat na&#x161;e funkcije u string kako bi on mogao
+da se ispi&#x161;e na ekran korisnika.</p>
+<p>Na ovaj na&#x10D;in mogu&#x107;e je prilagodjavati programe po potrebi koji su radili u interpreteru
+da bi se kompajlirali radi ve&#x107;e brzine izvr&#x161;avanja, kao i radi omogu&#x107;avanja unosa od strane
+korisnika.</p>
+<h2 id="monade">Monade</h2>
+<p>&#x160;ta je zapravo monada? Definicije su razne, ali je najjednostavnija za razumevanje slede&#x107;a:</p>
+<p>Monada je na&#x10D;in da se struktuiraju ra&#x10D;unanja po pitanju vrednosti i njihovog redosleda.</p>
+<p>Iz ovoga se mo&#x17E;e shvatiti da su monade zapravo grupisanja funkcija koje se mogu koristiti
+u daljim ra&#x10D;unanjima. Pored toga, monade imaju jo&#x161; jednu karakteristiku: funkciju povezivanja
+ili <code>&gt;&gt;=</code>. Funkcija povezivanja kombinuje monadu tipa a sa ra&#x10D;unom koji generi&#x161;e monadu tipa
+b na bi se napravila monada tipa b. Mo&#x17E;e se smatrati kao mixin klasa kada je u pitanju 
+objektno-orijentisana paradigma.</p>
+<p>Pored toga, monade imaju i <code>return</code> funkciju koja vra&#x107;a vrednost ra&#x10D;una unutar monade, tako 
+da, u kombinaciji sa funkcijom povezivanja, mo&#x17E;emo monade da koristimo u potpunosti.</p>
+<p>Postoje razli&#x10D;iti tipovi monada. Jedna od njih je <code>main</code> monada, koja je zapravo oblik
+<code>IO()</code> monade. Jo&#x161; jedan primer monade jeste <code>Maybe</code> monada koja ili vra&#x107;a <code>Nothing</code> ako
+vrednost ne postoji ili vra&#x107;a <code>Just vrednost</code> ako vrednost postoji. <code>Just vrednost</code> koristi
+jednu od osobina monada, ta&#x10D;nije funkciju identiteta monade: svaka monada mora da implementuje
+funkciju kojom se vra&#x107;a vrednost koju ona generi&#x161;e.</p>
+<p>Ako bismo tretirali monade kao nekakav vid objekata iz objektno orijentisanog programiranja,
+mogli bismo da shvatimo da, koriste&#x107;i monade, mi pretvaramo ulazne podatke, kroz niz funkcija
+koje karakteri&#x161;u jednu monadu, u drugi tip funkcija koje karakteri&#x161;u drugu monadu sve dok ne
+dobijemo izlaz koji generi&#x161;u &#x17E;eljene funkcije. Pored toga, monade imaju svoje posebne osobine
+koje nam mogu dodatno pomo&#x107;i u ra&#x10D;unu, kao i najrazli&#x10D;itiji tipovi monada koje Haskell pru&#x17E;a.</p>
+<h2 id="zaklju%C4%8Dak">Zaklju&#x10D;ak</h2>
+<p>Kroz ovo poglavlje smo pro&#x161;li na&#x10D;in implementacije Haskell programa koji se kompajliraju, 
+pretvaranje interpretiranog programa u kompajlirani, kao i na&#x10D;in na koji oni funkcioni&#x161;u. U
+drugom delu smo dotakli monade, opisali &#x161;ta su i kakva je njihova analogija sa stvarnim svetom.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./chapter4.html" class="navigation navigation-prev " aria-label="Previous page: Implementacija modela"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./chapter6.html" class="navigation navigation-next " aria-label="Next page: Gde dalje?"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

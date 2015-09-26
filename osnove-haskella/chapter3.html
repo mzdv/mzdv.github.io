@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Interpreter i kompajler | Haskell za studente</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./chapter4.html" />
+    
+    
+    <link rel="prev" href="./chapter2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="3" data-basepath="." data-revision="Thu Sep 17 2015 19:35:47 GMT+0200 (Central Europe Daylight Time)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Šta je Haskell i šta ga čini u osnovi?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2.html">
+            
+                
+                    <a href="./chapter2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Model podataka
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3" data-path="chapter3.html">
+            
+                
+                    <a href="./chapter3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Interpreter i kompajler
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4.html">
+            
+                
+                    <a href="./chapter4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Implementacija modela
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5.html">
+            
+                
+                    <a href="./chapter5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Kompilacija i još par koncepata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6.html">
+            
+                
+                    <a href="./chapter6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Gde dalje?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Haskell za studente</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="interpreter-i-kompajler">Interpreter i kompajler</h1>
+<hr>
+<h2 id="uvod">Uvod</h2>
+<p>Haskell, kao vi&#x161;i programski jezik, ima jednu zanimljivu stavku kad je u pitanju na&#x10D;in na koji
+se programi napisani u njemu izvr&#x161;avaju. Naime, Haskell omogu&#x107;ava i kompajliranje i
+interpretaciju programa, tako da se mo&#x17E;e koristiti istovremeno i kao skripting jezik, kao i
+jezik op&#x161;tije namene. Pored toga, u zavisnosti od implementacije kompajlera koja se koristi,
+mogu&#x107;e je i kreiranje Haskell <em>bytecode</em>-a.</p>
+<h2 id="kompajleri-i-interpreteri">Kompajleri i interpreteri</h2>
+<p>Aktuelna verzija programskog jezika Haskell je Haskell 2010, tako da &#x107;emo se njom baviti
+u daljem radu. Postoje i druge verzije poput Haskell 1998.</p>
+<p>Postoji nekoliko implementacija Haskell-a. Jedna od najpopularnijih je 
+<a href="https://www.haskell.org/ghc/" target="_blank">GHC</a> ili <em>Glasgow Haskell Compiler</em>. Glavna prednost GHC-a
+je u tome &#x161;to se putem njega aktivno razvija jezik, kao i mogu&#x107;nost dodatne optimizacije koja
+se posti&#x17E;e njegovim kori&#x161;&#x107;enjem. Jedan od kompajlera koji je tako&#x111;e popularan, ali pru&#x17E;a i
+mogu&#x107;nost kompilacije u <em>bytecode</em> jeste <a href="https://wiki.haskell.org/UHC" target="_blank">UHC</a> ili <em>Utrecht
+Haskell Compiler</em>. Jo&#x161; jedan od zanimljivijih primera jeste i 
+<a href="https://github.com/Lemmih/lhc" target="_blank">LHC</a>, ili <em>LLVM Haskell Compiler</em>, koji koristi mogu&#x107;nosti
+koje pru&#x17E;a <a href="http://llvm.org/" target="_blank">LLVM</a> platforma. Samim time &#x161;to odre&#x111;ene varijante BSD
+operativnih sistema koriste <em>clang</em> C kompajler, koji je deo <em>LLVM</em> platforme (ona izvr&#x161;ava
+<em>bytecode</em> generisan od strane <em>LLVM</em> kompajlera), mogu&#x107;e je (teoretski) koristiti Haskell
+za svrhu sistemskog programiranja na sistemima koji koriste <em>LLVM</em> kao platformu za
+kompilaciju.</p>
+<p>U ostatku knjige se bavimo samo sa <em>GHC</em> kompajlerom i njegovom REPL (<em>read, evaluate, print, 
+loop</em> - skup koraka koji se koriste prilikom interaktivnih interpretatora jezika) 
+implementacijom za interpretiranje jezika: <code>ghci</code> (skra&#x107;eno od <em>Glasgow Haskell Compiler 
+Interactive</em>).</p>
+<h2 id="instalacija">Instalacija</h2>
+<p>Najbr&#x17E;i i najbezbolniji na&#x10D;in instalacije Haskell-a za Va&#x161; operativni sistem je putem <em>Haskell Platform</em>
+instalacionog paketa. On se mo&#x17E;e preuzeti <a href="https://www.haskell.org/platform/" target="_blank">ovde</a> i dostupan je za sve
+aktuelne platforme.</p>
+<p>Sa njim dobijate <code>GHC</code> kompajler sa interpreterom, <code>cabal</code> upravlja&#x10D; paketa kojim se mogu instalirati 
+paketi kojima se pro&#x161;iruje funkcionalnost Haskell-a i 35 najkori&#x161;&#x107;enijih paketa (naj&#x10D;e&#x161;&#x107;e za rad sa
+strukturama podataka i povezivanje sa sistemskim funkcijama).</p>
+<h2 id="interpreter">Interpreter</h2>
+<p>U slu&#x10D;aju operativnog sistema Windows, nakon instalacije najlak&#x161;i na&#x10D;in za po&#x10D;etak Haskell avantura
+jeste sa otvaranjem interpretera (isto je i za ostale platforme, ali ne garantujem da &#x107;e iskustvo i 
+do&#x17E;ivljaj biti identi&#x10D;an). </p>
+<p>Interpreter mo&#x17E;e da se pokrene na dva na&#x10D;ina: </p>
+<ul>
+<li>Koriste&#x107;i <em>Command prompt</em> i izvr&#x161;avanjem komande <code>ghci</code></li>
+<li>Pokretanjem programa WinGHCi</li>
+</ul>
+<p>U toku daljeg rada &#x107;emo koristiti <code>WinGHCi</code>, kao i tekstualni editor (nebitno koji).</p>
+<p>Nakon pokretanja do&#x10D;eka&#x107;e nas slede&#x107;i prozor:
+<img src="images/winghci.png" alt="WinGHCi nakon pokretanja"></p>
+<p>Neophodno je obratiti pa&#x17E;nju na centralni, beli deo ekrana.
+<code>Prelude&gt;</code> predstavlja vi&#x161;e stvari:</p>
+<ul>
+<li>Po&#x10D;etna linija na kojoj se ispisuju komande</li>
+<li>Biblioteke koje su trenutno uvezene u kontekst programa; u ovom trenutku, to je samo <code>Prelude</code></li>
+</ul>
+<p><code>Prelude</code> predstavlja standardnu biblioteku, kao &#x161;to je to <code>System</code> u slu&#x10D;aju programskog jezika C#
+ili <code>stdio.h</code> u slu&#x10D;aju programskog jezika C.</p>
+<p>Pritiskom na Enter se vr&#x161;i evaluacija unetog izraza. Kao primer smo uneli izraz <code>map (&gt;2) [1,2,3,4,5]</code>
+koji se &#x10D;ita kao:</p>
+<p><code>Napraviti novu listu istih dimenzija kao po&#x10D;etna gde na odgovaraju&#x107;em mestu se nalazi re&#x161;enje provere 
+elementa sa predikatom koji proverava da li je element ve&#x107;i od broja dva.</code></p>
+<p><img src="images/enter.png" alt="WinGHCi nakon primera"></p>
+<p>Kao i &#x161;to je o&#x10D;ekivano, dobili smo niz istih dimenzija kao po&#x10D;etni gde se na svakoj poziciji, analogno
+poziciji elementa u po&#x10D;etnoj listi nalazi vrednost <code>False</code>, u slu&#x10D;aju da element nije ve&#x107;i od broja 2 ili 
+<code>True</code>, u slu&#x10D;aju da je element ve&#x107;i od broja dva : </p>
+<p><code>[False,False,True,True,True]</code></p>
+<p>Identi&#x10D;no re&#x161;enje bi se dobili da smo koristili <em>Command prompt</em>:</p>
+<p><img src="images/cmd.png" alt="Command prompt sa ghci nakon primera"></p>
+<h2 id="kompajler">Kompajler</h2>
+<p>Ako odlu&#x10D;imo da izvr&#x161;imo kompilaciju na&#x161;eg programa, potrebno je uraditi nekoliko stvari.</p>
+<p>Pre svega, potrebno je definisati <strong>ulaznu ta&#x10D;ku</strong> programa koja se u Haskell-u naziva
+<code>main</code> monada i pripada <code>IO()</code> polimorfnom tipu. O monadama vi&#x161;e u slede&#x107;em programu, tako da
+za sada je dovoljno tretirati <code>main</code> kao obi&#x10D;nu funkciju.</p>
+<p>U ulaznoj ta&#x10D;ki se vr&#x161;i pozivanje funkcija i njihova kompozicija, kao i preuzimanje ulaznih
+podataka sa konzole, a tako&#x111;e i njihov ispit.</p>
+<p>Kompilacija se vr&#x161;i otvaranjem <em>Command prompt</em>-a, navigacijom do direktorijuma gde se nalazi
+Haskell fajl sa <code>main</code> monadom (ne zaboravite da Haskell koristi ekstenziju <code>.hs</code>) i 
+pokretanjem komande <code>ghc imeFajla.hs</code></p>
+<p>Kao i uvek, najbolje je ilustrovati primerom i slikom, u ovom slu&#x10D;aju kompilacijom i 
+izvr&#x161;avanjem programa koji ispisuje string &quot;asd&quot; na ekran :</p>
+<p><img src="images/kompilacija.png" alt="Kompilacija putem Command prompt-a"></p>
+<h2 id="zaklju%C4%8Dak">Zaklju&#x10D;ak</h2>
+<p>Cilj ovog poglavlja je da pru&#x17E;i malo detaljniji tehni&#x10D;ki aspekt programskog jezika Haskell.
+Pored toga, namena je i da osposobi korisnika da rukuje alatom kako bi mogao da koristi 
+interpreter za testiranja koda, kao i na&#x10D;in da prilagodi kod koji je bio interpretiran u oblik
+na osnovu koga bi se kod kompajlirao.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./chapter2.html" class="navigation navigation-prev " aria-label="Previous page: Model podataka"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./chapter4.html" class="navigation navigation-next " aria-label="Next page: Implementacija modela"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

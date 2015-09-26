@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Šta je Haskell i šta ga čini u osnovi? | Haskell za studente</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./chapter2.html" />
+    
+    
+    <link rel="prev" href="./index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1" data-basepath="." data-revision="Thu Sep 17 2015 19:35:47 GMT+0200 (Central Europe Daylight Time)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Šta je Haskell i šta ga čini u osnovi?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2.html">
+            
+                
+                    <a href="./chapter2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Model podataka
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3.html">
+            
+                
+                    <a href="./chapter3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Interpreter i kompajler
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter4.html">
+            
+                
+                    <a href="./chapter4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Implementacija modela
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5.html">
+            
+                
+                    <a href="./chapter5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Kompilacija i još par koncepata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6.html">
+            
+                
+                    <a href="./chapter6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Gde dalje?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Haskell za studente</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="%C5%A1ta-je-haskell-i-%C5%A1ta-ga-%C4%8Dini-u-osnovi">&#x160;ta je Haskell i &#x161;ta ga &#x10D;ini u osnovi?</h1>
+<hr>
+<h2 id="uvod">Uvod</h2>
+<p>Haskell. Ime koje se &#x10D;esto izgovara u programerskim krugovima ili kao predmet razonode
+ili kao predmet obo&#x17E;avanja. Haskell je funkcionalni programski jezik, bez ikakvih 
+primesa ostalih paradigmi (poput objektno orijentisane ili imperativne paradigme), &#x10D;ime
+u startu ljudi postaju odbijeni od njega, a posebno kada im se ka&#x17E;e da Haskell ne sadr&#x17E;i
+promenljive niti petlje. Sve u Haskell-u su funkcije. Svaka funkcija u Haskellu je &quot;&#x10D;ista&quot; funkcija
+iliti funkcija koja uvek vra&#x107;a rezultat koji je odre&#x111;en ulaznim parametrima, bez bo&#x10D;nih efekata.
+Bo&#x10D;ni efekti predstavljaju skup promena gde se menja neko stanje iz &quot;spoljnog sveta&quot; (poput globalne promenljive;
+u ovom slu&#x10D;aju, &quot;unutra&#x161;nji svet&quot; predstavlja doseg funkcije).</p>
+<p>Naravno, ima jo&#x161; koncepata koji &#x10D;ine funkcionalni jezik, poput funkcija vi&#x161;eg reda,
+currying-a, monada, rekurzije (koja se koristi svuda gde bi se koristila petlja; naravno
+ne koristi se klasi&#x10D;na rekurzija koja se u&#x10D;i, nego njena optimizovana varijanta, tzv. rekurzija repa
+(tail recursion) i matemati&#x10D;kog aparata koji se zove teorija kategorija (koji pak povla&#x10D;i svoje pojmove
+poput funktora, morfizama, kategorija i sli&#x10D;noga). Ovo ne treba da vas brine (za sada) jer &#x107;emo pro&#x107;i
+svaki od ovih pojmova u slede&#x107;im poglavljima.</p>
+<p>A da li ste znali da je Haskell vi&#x161;e nego re&#x10D; u etru?
+Haskell koriste razne velike firme, kao &#x161;to je 
+<a href="https://code.facebook.com/posts/745068642270222/fighting-spam-with-haskell/" target="_blank">Facebook</a> koji ga koristi za borbu 
+protiv spam-a, ili <a href="https://news.ycombinator.com/item?id=1719456" target="_blank">Microsoft</a> koji zapo&#x161;ljava osobe koje se 
+zapravo bave razvitkom novih verzija Haskell-a i unapre&#x111;ivanjem postoje&#x107;ih.</p>
+<p>Ovo nisu jedine kompanije koje ga koriste (ili koje se bave njegovim razvitkom). Koriste ga i banke, poput
+<a href="https://www.haskell.org/communities/12-2007/html/report.html#sect7.1.2" target="_blank">Barclays</a>, kao i svima poznate
+firme Google i Intel.</p>
+<h2 id="upotreba-i-na%C4%8Din-funkcionisanja">Upotreba i na&#x10D;in funkcionisanja</h2>
+<p>Sad kada smo Vas, &#x10D;itaoca, ubedili da se Haskell zapravo koristi, a i zapla&#x161;ili, vreme je da vidimo kako
+Haskell mo&#x17E;e da pomogne u svakodnevnim programerskim aktivnostima. Koriste&#x107;i Haskell, Vi, kao programer,
+ne govorite ra&#x10D;unaru <strong>&#x161;ta on treba da uradi da bi do&#x161;ao do rezultata</strong>, nego <strong>kako rezultat treba da izgleda</strong>. Samim time, Haskell
+je <em>deklarativni</em> programski jezik (poput SQL-a). </p>
+<p>Primer: &#x17E;elimo da iz niza elemenata <code>[1,2,3,4,5]</code> izvadite sve elementi koji su deljivi sa dva i da ih
+ispi&#x161;ete na ekran.</p>
+<p>U imperativnom programskom jeziku, poput Javascript-a, algoritam bi izgledao ovako:</p>
+<pre><code>var niz = [1, 2, 3, 4, 5];
+for(var i = 0; i &lt; niz.length; i++) {
+    if(niz[i] % 2 === 0)
+        console.log(niz[i] + &apos;\n&apos;);    
+}
+</code></pre><p>Rezultat bi bio: </p>
+<pre><code>2
+4
+</code></pre><p>Obratite pa&#x17E;nju da smo mi ra&#x10D;unari rekli <em>svaki korak</em> koji on treba da uradi da bi ispisao vrednosti (za svaki
+element niza, po&#x10D;ev&#x161;i od nulte pozicije, pa do maksimalne pozicije, ne uklju&#x10D;uju&#x107;i nju, sa korakom od jedne 
+pozicije, proveri da li je trenutni element na koraku iz niza deljiv bez ostatka sa dva; ako jeste, ispi&#x161;i ga na 
+standardni izlaz).</p>
+<p>U Haskell-u, ovo bi se moglo uraditi na slede&#x107;i na&#x10D;in:</p>
+<pre><code>[x | x &lt;- [1,2,3,4,5], mod x 2 == 0]
+</code></pre><p>Rezultat je <em>nova</em> lista (po&#x161;to Haskell ne sadr&#x17E;i koncept nizova; to su zapravo liste):</p>
+<pre><code>[2,4]
+</code></pre><p>Obratite pa&#x17E;nju da je ovo <em>nova</em> lista. A za&#x161;to je tako? Zar nije logi&#x10D;no da &#x107;emo dobiti nekakavu vrstu
+&quot;filterisane&quot; liste? Haskell promovi&#x161;e koncept <strong>nepromenljivosti</strong> vrednosti (<em>immutability</em> na
+engleskom jeziku) - drugim re&#x10D;ima, nikad se ne menjaju originalne vrednosti koje su ulaz u relaciju. 
+Izvedu se nove vrednosti iz postoje&#x107;ih koje zadovoljavaju uslov propisan relacijom.</p>
+<p>Kako &#x10D;itamo ovaj kod napisan u Haskell-u? Nikakav problem, &#x10D;ak je i smisleniji nego
+u slu&#x10D;aju Javascript-a: </p>
+<pre><code>Postoji vrednost x koja za svaki element niza [1, 2, 3, 4, 5] radi proveru
+da li je on paran; ako jeste, vrati listu sa tim nizom.
+</code></pre><p>Odjednom imamo problem: kako to mislimo da vrati listu samo sa tim nizom? &#x160;ta ako imamo
+vi&#x161;e elemenata koji zadovoljavaju uslov parnosti?</p>
+<p>Kao &#x161;to je re&#x10D;eno, Haskell koristi rekurziju u najve&#x107;oj mogu&#x107;oj meri. Umesto da vrati listu
+odmah prilikom zavr&#x161;etka, on <em>generi&#x161;e</em> listu posle svakog rekurzivnog poziva. Naime,
+on ne vra&#x107;a listu <code>[2,4]</code>. On zapravo vra&#x107;a <strong>funkciju</strong> <code>2:4:[]</code> koja kreira listu. Ova
+funkcija se mo&#x17E;e pro&#x10D;itati na slede&#x107;i na&#x10D;in: dodati na prvo mesto u praznu listu element 4, a potom
+element 2.</p>
+<p>Odjednom se pojavljuje pitanje: kako smo zapravo do&#x161;li do toga da stavljamo prvo element
+4, a potom element 2? Nije valjda da Haskell radi sve naopako?</p>
+<p>Koliko god to lepo zvu&#x10D;alo, Haskell ne obr&#x107;e svet naopa&#x10D;ke (previ&#x161;e). Glavni princip je da se Haskell prvenstveno
+&#x10D;ita <strong>sa desne strane na levu</strong>, tako da, prvo &#x161;to je ura&#x111;eno jeste definisana <em>nova funkcija</em> koja se sastoji
+od funkcije <code>mod 2</code>. Malo &#x10D;udno izgleda, zar ne? I gde onda stavljamo parametar koji se ispituje?</p>
+<p>Oblik ove funkcije izgleda slu&#x10D;no zbog jednog prostog razloga: prefiksna notacija. Prefiksnom notacijom se
+defini&#x161;e <strong>funkcija</strong> (mod, sabiranje, oduzimanje itd.) pre nego &#x161;to se defini&#x161;u njeni parametri.</p>
+<p>Primer: ako bismo hteli da napi&#x161;emo <code>1 + 2</code> u prefiksnoj notaciji, to bi izgledalo ovako <code>+ 1 2</code>. Za&#x161;to se 
+koristi prefiksna notacija, umesto ustaljene infiksne? Iz prostog razloga zato &#x161;to se onda omogu&#x107;ava lak&#x161;e
+razumevanje i pisanje <strong>kompozicije funkcija</strong>, kao i kori&#x161;&#x107;enje i razumevanja ostalih koncepata funkcionalnog
+programiranja, poput <strong>funkcija vi&#x161;eg reda</strong> i <strong>currying</strong>-a. Naravno, uvek mo&#x17E;emo i da koristimo infiksnu
+notaciju ako nam je lak&#x161;e za razumevanje (prilikom analize pre kompajliranja, za neke funkcije se i preporu&#x10D;uje
+klasi&#x10D;na, infiksna forma; jedna od njih je funkcija <code>elem</code> koja proverava da li je odre&#x111;ena vrednost element
+liste). Infiksnu formu aktiviramo koriste&#x107;i karakter ` pre kori&#x161;&#x107;enja funkcije.</p>
+<p>Primer: umesto <code>mod 6 2</code>, gde se vr&#x161;i provera ostatka prilikom deljenja broja 6 sa brojem dva, mo&#x17E;emo da napi&#x161;emo
+<code>6</code> <code>`mod` </code> <code>2</code></p>
+<p>Dobro, a &#x161;ta se onda de&#x161;ava sa parametrom koji ho&#x107;emo da ispitamo? Gde ga stavljamo? Za to se koriste gore 
+navedeni koncepti.</p>
+<p><strong>Funkcije vi&#x161;eg reda</strong> (iliti <strong>funktori</strong>) predstavljaju funkcije koje primaju jednu ili vi&#x161;e funkcija kao 
+parametar ili vra&#x107;aju funkciju kao rezultat. Idealno, one ispunjavaju obe ove karakteristike.</p>
+<p>&#x160;ta nam ovo omogu&#x107;ava? Ovo nam omogu&#x107;ava da izbegnemo kori&#x161;&#x107;enje promenljivih, samim time &#x161;tede&#x107;i memorijski
+prostor (po&#x161;to se funkcija ne izvr&#x161;ava do trenutka kada je potrebna vrednost koju ona vra&#x107;a; ovo se zove
+&quot;lenja evaluacija&quot; ili <em>lazy evaluation</em>) po cenu dodatnih ciklusa izvr&#x161;avanja. Pored toga, kori&#x161;&#x107;enje
+funkcija vi&#x161;eg reda nam omogu&#x107;ava da, na osnovu njih, kreiramo druge funkcije vi&#x161;eg reda ili &#x10D;ak funkcije
+prvog reda (obi&#x10D;ne funkcije), u zavisnosti od na&#x161;ih potreba. </p>
+<p>Proces kreiranja nove funkcije koja prima manje parametara nego prvobitna funkcija, ali gde su svi parametri 
+funkcije koje sadr&#x17E;e jedan parametar (parcijalna primena funkcije) se zove <strong>currying</strong>. Kako radi postupak
+&quot;u suprotnom smeru&quot;? Prosto. Vrednost koja je prosle&#x111;ena <em>curry</em>-evanoj funkciji biva dalje prosle&#x111;ena kroz
+funkcije koje su kori&#x161;&#x107;ene da bi se ona napravila.</p>
+<p>Mo&#x17E;da je ovo pomalo poznato. Naravno, po&#x161;to je ovaj koncept poznat u matematici ve&#x107; mnogo vremena kao
+<strong>kompozicija funkcija</strong>. Kompozicija funkcija predstavlja jedan od osnovnih matemati&#x10D;kih koncepata na kome
+je zasnovan Haskell.</p>
+<p>Vra&#x107;amo se nazad na primer; trenutno imamo funkciju <code>mod</code> na koju je parcijalno primenjena funkcija koja 
+predstavlja broj 2 (u Haskell-u se funkcije nalaze iza svega; u ovom slu&#x10D;aju, broj 2 predstavlja funkcija koja 
+generi&#x161;e broj 2). Dobili smo novu funkciju, nazovimo je <code>ostatakSaDva</code>, koja prima jedan parametar: broj i na
+osnovu koga se vra&#x107;a numeri&#x10D;ka vrednost koja predstavlja ostatak prilikom deljenja sa dva (ili funkcija koja
+generi&#x161;e broj 0 ili funkcija koja generi&#x161;e broj 1). Samim time, ura&#x111;en je <em>currying</em> funkcije <code>mod</code>.</p>
+<p>&#x160;ta se dalje de&#x161;ava? I dalje imamo listu brojeva <code>[1,2,3,4,5]</code> iz koje je neophodno kreirati novu listu sa
+elementima koji su parni (iliti deljivi sa dva bez ostatka). Kao &#x161;to je re&#x10D;eno, Haskell koristi rekurziju i
+&quot;rekurziju repa&quot; - <em>tail recursion</em>, radi izvr&#x161;avanja prolaza kroz odre&#x111;eni skup podataka. Ako se setimo da
+je cilj rekurzije smanjenje obima problema do trivijalnog re&#x161;enja, mo&#x17E;emo zaklju&#x10D;iti da je neophodno krenuti od
+zadnjeg elementa liste, a potom konvergirati do po&#x10D;etnog elementa.</p>
+<p>Sad kada smo naoru&#x17E;ani sa ovim obja&#x161;njenjima, mo&#x17E;emo da tvrdimo slede&#x107;e za gore navedeni primer:</p>
+<p>Vr&#x161;i se rekurzivni prolazak kroz listu, primenjuju&#x107;i svaki element na <em>curry</em>-evanu funkciju <code>mod 2</code> proveravaju&#x107;i
+da li je rezultuju&#x107;a vrednost identi&#x10D;na sa brojem <code>0</code>. U slu&#x10D;aju da jeste, dodati je na postoje&#x107;u listu re&#x161;enja.</p>
+<p>Gore sam napisao o famoznom <code>2:4:[]</code>. Pogledajte malo bolje. I ovo je rekurzija (ili rekurentna relacija), ali u 
+suprotnom smeru. Kre&#x107;emo od po&#x10D;etnog re&#x161;enja koje predstavlja prazna lista <code>[]</code> (jer je mogu&#x107;e da nijedan od 
+elemenata liste nije deljiv sa brojem 2) i potom na nju rekurzivno primenjujemo operaciju konkatenacije <code>:</code> 
+zajedno sa brojem koji odgovara gore navedenom uslovu.</p>
+<h2 id="definisanje-funkcija-i-njihovi-potpisi">Definisanje funkcija i njihovi potpisi</h2>
+<p>Recimo da &#x17E;elimo da imamo funkciju koju ho&#x107;emo dalje da koristimo u na&#x161;em programu. Neka je to ne&#x161;to poput na&#x161;e
+funkcije koja nam daje ostatak pri deljenju sa dva. Kako bismo mogli da je defini&#x161;emo, tako da je dalje koristimo
+prilikom izvr&#x161;avanja na&#x161;eg programa? Lako, napravi&#x107;emo <strong>imenovanu</strong> funkciju koja &#x107;e obuhvatati na&#x161;u funkciju.</p>
+<p>Za&#x161;to sam stavio akcenat na re&#x10D; <strong>imenovanu</strong>? Zato &#x161;to funkcija u formatu kome smo je koristili do sada je bila
+<strong>neimenovana funkcija</strong>, &#x161;to zna&#x10D;i da nije mogla da se koristi dalje od dosega funkcije u kojoj je pozana. Drugi
+naziv za neimenovane funkcije jeste <strong>closure</strong> ili <strong>lambda funkcije</strong>. Postoji jo&#x161; jedan na&#x10D;in za definisanje
+lambda funkcije, ali o njemu vi&#x161;e malo kasnije.</p>
+<p>Kako pravimo imenovanu funkciju? Za po&#x10D;etak, potreban nam je naziv nove funkcije - neka bude, kao gore, 
+<code>ostatakSaDva</code>.</p>
+<p>Defini&#x161;emo je na slede&#x107;i na&#x10D;in:</p>
+<pre><code>ostatakSaDva x = mod x 2
+</code></pre><p>Iako li&#x10D;i, ovo nije promenljiva. Ovo je samo nova funkcija, koja prima jedan parametar (koji smo mi, u njenom
+dosegu nazvali <code>x</code>). Lako se mo&#x17E;e zaklju&#x10D;iti da &#x107;e ova funkcija vratiti rezultat funkcije koja ra&#x10D;una ostatak
+pri deljenju broja <code>x</code> sa brojem 2.</p>
+<p>Iako se ne &#x10D;ini na prvi pogled, ali postoji potencijalni problem: &#x161;ta ako funkciji prosledimo ne&#x161;to &#x161;to <strong>nije</strong>
+deljivo sa brojem 2 ni pod stavkom razno, poput stringa? Ili karaktera? Ili funkcije koja, kao izlaz, daje ne&#x161;to
+&#x161;to se ne mo&#x17E;e podeliti sa brojem 2? Neophodno je da defini&#x161;emo tip podataka parametra funkcije, a i kad smo ve&#x107; 
+tu, mogli bismo da defini&#x161;emo tip podatka povratne vrednosti.</p>
+<p>Za razliku od &quot;ustaljenih&quot; na&#x10D;ina definisanja ulaznog tipa podatka i povratne vrednosti (npr. u programskom 
+jeziku C#, <code>int ostatakSaDva(int x)</code>), Haskell koristi druga&#x10D;iji na&#x10D;in za definisanje povratnih tipova koji je u 
+po&#x10D;etku te&#x17E;i za razumevanje, ali kasnije omogu&#x107;ava lak&#x161;e razumevanje prilikom kompozicije funkcija i odre&#x111;ivanja 
+parametara koje funkcije prosle&#x111;uju me&#x111;usobno. Takav tip se zove <strong>Hindli - Milner sistem tipova</strong> (ili u 
+originalu <em>Hindley - Milner type system</em>).</p>
+<p><strong>Hindli - Milner sistem tipova</strong> je sistem za definisanje tipova podataka u lambda ra&#x10D;unu sa parametarskim 
+polimorfizmom. Vau, to je zvu&#x10D;alo prete&#x161;ko i nepotrebno. Iako se &#x10D;ini tako, zapravo je lako za razumevanje. </p>
+<p>Lambda ra&#x10D;un, kao jedna od osnovnih komponenti koja pogoni Haskell, se defini&#x161;e kao formalni sistem u 
+matemati&#x10D;koj logici za iskazivanje ra&#x10D;una koriste&#x107;i apstrakciju funkcija i njihovu primenu putem povezivanja i 
+zamena vrednosti koje koriste. Ukratko re&#x10D;eno, sve &#x161;to smo ve&#x107; pro&#x161;li dok smo radili prethodni primer - 
+kompozicija funkcija, funkcije vi&#x161;eg reda i <em>currying</em>.</p>
+<p>Sada kada znamo &#x161;ta je lambda ra&#x10D;un, &#x161;ta je onda parametarski polimorfizam. Po samom poreklu re&#x10D;i, mo&#x17E;e se
+zaklju&#x10D;iti da postoje odre&#x111;eni tipovi koji su podskupovi drugih, op&#x161;tijih tipova. <strong>Parametarski polimorfizam</strong>
+predstavlja koncept koji omogu&#x107;ava definisanje tipova podataka (ili &#x10D;ak funkcija) koje su generi&#x10D;ne za ostale
+tipove.</p>
+<p>Primer: Haskell ima tip podatka <code>Real</code>. To je generi&#x10D;ki tip podatka, koji pru&#x17E;a operacije nad njime, kao i nad
+njegovim naslednicima. Konkretniji primer tipa podatka od <code>Real</code>-a bi bio tip podatka <code>Integral</code> koji
+implementuje operacije celobrojnog deljenja, kao i operacije odre&#x111;ivanja ostatka. Istovremeno, <code>Real</code> je podtip
+tipa podataka <code>Num</code> koji defini&#x161;e brojeve. Slede&#x107;a slika bi to mogla mnogo bolje da opi&#x161;e (preuzeto sa 
+<a href="https://en.wikibooks.org/wiki/Main_Page" target="_blank">Wikibooks</a>):</p>
+<p><img src="images/classes.jpg" alt="Tipovi podataka u Haskell-u"></p>
+<p>Hajde da prepi&#x161;emo na&#x161;u funkciju <code>ostatakSaDva</code>, tako da budemo osigurani u slu&#x10D;aju problemati&#x10D;nih ulaznih
+parametara. Njen novi oblik bi, napisan putem Hindli - Milner sistema tipova, izgledao ovako:</p>
+<pre><code>ostatakSaDva :: (Integral a) =&gt; a -&gt; a
+</code></pre><p>Mo&#x17E;da se &#x10D;ini kompleksnim (ipak ste upozoreni), ali nije. Deo <code>(Integral a)</code> defini&#x161;e tip podataka koji se mo&#x17E;e
+koristiti u radu funkcije i dodeljuje mu alias <code>a</code> radi lak&#x161;eg razumevanja. Oznaka <code>=&gt;</code> predstavlja da je gotov
+deo definisanja alijasa i da mo&#x17E;e da se krene sa radom na tipovima podataka ulaznih podataka, kao i na tipovima
+podataka izlaznih podataka. Samim time, ako znamo da <code>Integral</code> predstavlja ceo broj i da mu je dat alias <code>a</code>,
+deo <code>a -&gt; a</code> postaje jasan i mo&#x17E;e se protuma&#x10D;iti kao <code>za ulazni parametar koji je predstavljen aliasom a, vrati
+nakon izvr&#x161;enja podataka koji ima tip podataka koji se mo&#x17E;e predstaviti aliasom a</code>.</p>
+<p>Sada mo&#x17E;emo u kodu koristiti na&#x161;u funkciju bez bojazni da ne&#x107;e raditi.</p>
+<h2 id="zaklju%C4%8Dak">Zaklju&#x10D;ak</h2>
+<p>U ovom poglavlju upoznali smo &#x161;ta je Haskell, ko ga koristi i kako, kao i kako se on koristi u programiranju.
+Pored toga, pro&#x161;li smo i kroz glavne koncepte koji &#x10D;ine Haskell, poput funkcija vi&#x161;eg reda, <em>currying</em>-a, 
+lambda ra&#x10D;una, Hindli - Milnerovog sistema tipova kroz primer gde je data alternativna implementacija u 
+programskom jeziku Javascript. Na kraju smo definisali na&#x161;u funkciju, sa i bez Hindli - Milnerovog sistema tipova
+koju mo&#x17E;emo koristiti u daljem programiranju.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./chapter2.html" class="navigation navigation-next " aria-label="Next page: Model podataka"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Implementacija modela | Haskell za studente</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./chapter5.html" />
+    
+    
+    <link rel="prev" href="./chapter3.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="4" data-basepath="." data-revision="Thu Sep 17 2015 19:35:47 GMT+0200 (Central Europe Daylight Time)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Šta je Haskell i šta ga čini u osnovi?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter2.html">
+            
+                
+                    <a href="./chapter2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Model podataka
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter3.html">
+            
+                
+                    <a href="./chapter3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Interpreter i kompajler
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4" data-path="chapter4.html">
+            
+                
+                    <a href="./chapter4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Implementacija modela
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter5.html">
+            
+                
+                    <a href="./chapter5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Kompilacija i još par koncepata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter6.html">
+            
+                
+                    <a href="./chapter6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Gde dalje?
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Haskell za studente</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="implementacija-modela">Implementacija modela</h1>
+<hr>
+<h2 id="uvod">Uvod</h2>
+<p>U ovom poglavlju se bavimo implementacijom modela. I&#x107;i &#x107;emo deo po deo, kao &#x161;to je definisano
+pre dva poglavlja. Koristi&#x107;emo interpreter WinGHCi.</p>
+<h2 id="avion-i-hangar">Avion i hangar</h2>
+<p>Da bismo odr&#x17E;avali spisak aviona koji se nalaze trenutno u hangaru, koristimo listu
+n-torki (u ovom slu&#x10D;aju n-torki od sedam &#x10D;lanova - sedmorke) aviona. Neka se lista u kojoj
+one nalaze zove <code>hangar</code>. On &#x107;e u po&#x10D;etku biti prazna lista, ali &#x107;e se kasnije popunjavati.</p>
+<p>Kod za ovaj deo, gde se inicijalizuje hangar i koristi se primer aviona i dodaje u hangar
+se nalazi ispod:</p>
+<pre><code>Prelude&gt; let hangarA = []
+Prelude&gt; let avion = (&quot;Antonov&quot;,&quot;Antonov Airlines&quot;,&quot;An-225&quot;,&quot;AN-AAA&quot;,[1],15000,1000)
+Prelude&gt; let hangarB = avion:hangarA -- operator : vr&#x161;i konkatenaciju na po&#x10D;etak liste
+</code></pre><p>Rezultat:</p>
+<pre><code>[(&quot;Antonov&quot;,&quot;Antonov Airlines&quot;,&quot;An-225&quot;,&quot;AN-AAA&quot;,[1],15000,1000)]
+</code></pre><p>U rezultatu vidimo da smo uspe&#x161;no dodali sedmorku u listu hangar. Pored toga, koristili smo
+klju&#x10D;nu re&#x10D; <code>let</code> i posle nje naziv funkcije koja predstavlja rekurzivnu listu deklaracija.
+Ova funkcija rekurzivno generi&#x161;e dodeljene vrednosti.</p>
+<p>Gornji kod smo mogli da napi&#x161;emo na druga&#x10D;iji na&#x10D;in, da ne defini&#x161;emo funkciju generator
+<code>hangarA</code> koja predstavlja praznu listu, a potom funkciju generator <code>hangarB</code> koja slu&#x17E;i
+da zapravo sadr&#x17E;i novu listu (po&#x161;to su strukture podataka u Haskell-u <strong>nepromenljive</strong>,
+neophodno je da kreiramo novu funkciju koja generi&#x161;e listu). Na ovaj na&#x10D;in pravimo vid
+zavisnih stanja me&#x111;u funkcijama generatorima tako da odr&#x17E;avamo perzistentnost podataka
+(u realnim sistemima, sistem uop&#x161;te ne odr&#x17E;ava stanje funkcija generatora, nego koristi
+eksternu bazu podataka za taj posao).</p>
+<p>Na ovaj na&#x10D;in omogu&#x107;avamo dolazak aviona u hangar.</p>
+<p>Izlazak aviona iz hangara obavljamo obrnuto od ulaska aviona u hangar:</p>
+<pre><code>Prelude&gt; hangarA = drop 1 hangarB
+</code></pre><p>Rezultat (vrednost generator funkcije <code>hangarA</code>):</p>
+<pre><code>[] -- prazna lista; hangar je prazan
+</code></pre><p>Pored funkcije <code>drop</code> koja kao prvi parametar prima broj elemenata koji treba da se izbace
+od po&#x10D;etka liste, a drugi parametar lista iz koje se izbacuju elementi (potpis joj je
+slede&#x107;i: <code>drop :: Int -&gt; [a] -&gt; [a]</code>), postoje i funkcije <code>tail</code> koja vra&#x107;a prvi element 
+i <code>init</code> koja vra&#x107;a listu <strong>bez</strong> prvog elementa.</p>
+<h2 id="unapre%C4%91enja">Unapre&#x111;enja</h2>
+<p>Unapre&#x111;enja defini&#x161;emo koriste&#x107;i strukturu podataka koja se zove <strong>mapa</strong>. Mapa predstavlja ure&#x111;en par
+klju&#x10D; - vrednost. U na&#x161;em slu&#x10D;aju, klju&#x10D; &#x107;e da predstavlja redni broj unapre&#x111;enja (onaj isti broj koji
+smo stavljali kod aviona), dok &#x107;e njegova vrednost da bude cena/vrednost unapre&#x111;enja.</p>
+<p>Mape u Haskell-u se prave od listi. Najzanimljivija stvar &#x161;to se mapa kao mapa <strong>ne pravi</strong>, nego se ona
+<strong>generi&#x161;e</strong> svaki put kada se napravi njen poziv.</p>
+<p>Pre nego &#x161;to krenemo da radimo sa mapama, potrebno je da unesemo opseg u kome se mape nalaze. Po&#x10D;etni
+opseg karakteristi&#x10D;an za svaki GHCi program jeste &quot;Prelude&quot; koji predstavlja osnovne funkcije koje
+pru&#x17E;a Haskell.</p>
+<p>Rad sa mapama se nalazi u opsegu <code>Data.Map</code>. Njegov uvoz vr&#x161;imo na slede&#x107;i na&#x10D;in iz GHCi:</p>
+<pre><code>:m Data.Map
+</code></pre><p>Zna&#x107;emo da je uvoz bio uspe&#x161;an onog trenutka kada, pored <code>Prelude</code>, bude pisalo <code>Prelude Data.Map</code>. Sada
+mo&#x17E;emo da radimo sa mapama.</p>
+<p>Primer rada sa mapama u kontekstu definisanja unapre&#x111;enja za avione:</p>
+<pre><code>Prelude Data.Map&gt; let unapredjenja = fromList [(1,1000), (2,10000), (3,5000)]
+</code></pre><p>Ovako smo kreirali funkciju generator <code>unapre&#x111;enja</code> koja generi&#x161;e mapu na osnovu unete liste svaki put
+kada se pozove.</p>
+<p>Sad kada imamo mapu, &#x161;ta mo&#x17E;emo da radimo sa njom? Hajde da odredimo sve klju&#x10D;eve mape:</p>
+<pre><code>keys unapredjenja
+</code></pre><p>Rezultat je:</p>
+<pre><code>[1,2,3]
+</code></pre><p>Ali zar nismo ovo mogli da uradimo putem liste? &#x160;to smo uop&#x161;te pravili mapu? Ako bismo koristili listu
+da izvadimo klju&#x10D;eve, kod bi izgledao ovako:</p>
+<pre><code>Prelude&gt; let unapredjenja = [(1,1000), (2,10000), (3,5000)]
+Prelude&gt; map fst unapredjenja --- ako nismo uvezli Data.Map opseg; ako jesmo, map zameniti sa Prelude.map
+</code></pre><p>Rezultat:</p>
+<pre><code>[1,2,3]
+</code></pre><p>Iako je izvodljivo, u startu gubimo jednostavnost koda: potrebno je da izvr&#x161;imo funkciju mapiranja <code>map</code>
+(koja nema veze sa mapama od malopre, po&#x161;to ona vr&#x161;i transformaciju jedne listu u drugu) nad prvim 
+elementima (oznaka <code>fst</code> vra&#x107;a prvi element iz ure&#x111;enog para) iz liste <code>unapredjenja</code> (naravno, rekurzivno
+na isti na&#x10D;in kao &#x161;to je opisano u prethodnim poglavljima - kreiranjem funkcije <code>1:2:3:[]</code>).</p>
+<p>Koncept kada se vi&#x161;e operacija mo&#x17E;e koristiti radi dolaska do istog re&#x161;enja (bile one me&#x111;usobno
+jednostavnije ili te&#x17E;e za razumevanja) se zove <strong>sintakti&#x10D;ki &#x161;e&#x107;er</strong> (<em>syntactic sugar</em>).</p>
+<h2 id="izve%C5%A1taji-i-statistika">Izve&#x161;taji i statistika</h2>
+<p>Kroz izve&#x161;taje i statistiku se mo&#x17E;e videti prava primena funkcionalnog i deklarativnog programiranja,
+po&#x161;to mi &quot;izvla&#x10D;imo&quot; podatke iz postoje&#x107;eg skupa vrednosti, umesto da izdajemo korake ra&#x10D;unaru koji &#x107;e
+podatke iz po&#x10D;etnih vrednosti da transformi&#x161;e u nove.</p>
+<p>Ukupan broj aviona, zajedno sa unapre&#x111;enim i neunapre&#x111;enim &#x107;emo uraditi na slede&#x107;i na&#x10D;in:</p>
+<pre><code>Prelude&gt; let hangar = [(&quot;Antonov&quot;,&quot;Antonov Airlines&quot;,&quot;An-225&quot;,&quot;AN-AAA&quot;,[1],15000,1000),(&quot;Boeing&quot;,&quot;Air Srbija&quot;,&quot;737&quot;,&quot;YU-ANJ&quot;,[1,2,3],19000,16000)]
+Prelude&gt; length hangar
+</code></pre><p>Rezultat: </p>
+<pre><code>2
+</code></pre><p>U slu&#x10D;aju unapre&#x111;enih aviona, potrebno je da odaberemo sve avione gde peti element sedmorke postoji:</p>
+<pre><code>Prelude&gt; let unapredjenjaVII (_,_,_,_,z,_,_) = z 
+                                     -- ovaj nesre&#x107;ni oblik vra&#x107;a od sedmorke njen peti element; u ovom 
+                                     -- slu&#x10D;aju lista njenih unapre&#x111;enja; _ karakter ozna&#x10D;ava vrednost  
+                                     -- koja se zanemaruje; z karakter je proizvoljan
+Prelude&gt; length [x | x &lt;- hangar, not (null (unapredjenjaVII x))]
+</code></pre><p>Rezultat:</p>
+<pre><code>2
+</code></pre><p>Analogno se radi i u slu&#x10D;aju aviona koji nisu unapre&#x111;eni, samo &#x161;to se radi kompozicija funkcija sa 
+funkcijom <code>not</code>:</p>
+<pre><code>Prelude&gt; length [x | x &lt;- hangar, not (null (unapredjenjaVII x))]
+</code></pre><p>Rezultat</p>
+<pre><code>0 -- po&#x161;to svi avioni u hangaru imaju unapre&#x111;enja
+</code></pre><p>Ako bismo hteli da odredimo koliko je novca potro&#x161;eno za sva unapre&#x111;enja, neophodno je da iz liste svih
+unapre&#x111;enja, za svaki avion, pro&#x10D;itamo vrednosti na koje pokazuju klju&#x10D;evi i potom da ih saberemo.</p>
+<p>Primer:</p>
+<pre><code>Prelude Data.Map&gt; let unaprediti = [x | x &lt;- (Prelude.map unapredjenjaVII hangar)]      -- vra&#x107;a[[1],[1,2,3]]
+Prelude Data.Map&gt; let unapreditiCisto = concat unaprediti                             -- koje pretvaramo u [1,1,2,3]
+Prelude Data.Map&gt; sum (Prelude.map (unapredjenja !) unapreditiCisto)
+</code></pre><p>Rezultat:</p>
+<pre><code>17000
+</code></pre><p>Tre&#x107;a linija je ovde najbitnija. Naime, za svaki klju&#x10D; iz <code>unapreditiCisto</code>, mi pronalazimo njenu vrednost
+u mapi <code>unapredjenja</code> koriste&#x107;i operator <code>!</code>, a potom pravimo od toga novu listu - listu koja sadr&#x17E;i cene
+svih unapre&#x111;enja. Posle toga je dovoljno da izvr&#x161;imo <code>sum</code> da bismo do&#x161;li do &#x17E;eljenog izraza.</p>
+<p>Funkcija <code>concat</code> se koristi da &quot;spljo&#x161;ti&quot; listu.</p>
+<p>U slu&#x10D;aju da &#x17E;elimo da izra&#x10D;unamo cenu svih unapre&#x111;enja samo jedne avio kompanije, to bismo uradili na
+slede&#x107;i na&#x10D;in:</p>
+<pre><code>Prelude Data.Map&gt; let unapredjenjaII (_,m,_,_,_,_,_) = m
+Prelude Data.Map&gt; let unaprediti = [unapredjenjaV x | x &lt;- hangar, unapredjenjaII x == &quot;Antonov Airlines&quot;]
+Prelude Data.Map&gt; let unapreditiCisto = concat unaprediti                    
+Prelude Data.Map&gt; sum (Prelude.map (unapredjenja !) unapreditiCisto)
+</code></pre><p>Rezultat:</p>
+<pre><code>1000
+</code></pre><p>Ako bismo odlu&#x10D;ili da ra&#x10D;unamo prose&#x10D;nu vrednost, podelili bismo gore dobijene sume sa brojem unapre&#x111;enja
+u svim avionima ili u svim avio kompanijama, zavisi od &#x17E;eljene situacije.</p>
+<h2 id="zaklju%C4%8Dak">Zaklju&#x10D;ak</h2>
+<p>U ovom poglavlju smo pro&#x161;li konkretniju primenu Haskell-a za stvarne situacije. Kao &#x161;to se vidi na po&#x10D;etku,
+problem mo&#x17E;e da predstavlja nepromenljivost podataka; ali za sve ostale stavke, Haskell je i te kako
+sposoban da ih uradi, ponekad &#x10D;ak jednostavnije i lak&#x161;e nego u imperativnim programskim jezicima.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./chapter3.html" class="navigation navigation-prev " aria-label="Previous page: Interpreter i kompajler"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./chapter5.html" class="navigation navigation-next " aria-label="Next page: Kompilacija i još par koncepata"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
